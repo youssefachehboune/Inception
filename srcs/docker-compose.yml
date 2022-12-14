@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb
+    container_name: mariadb
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    restart: always
+    # volumes:
+    #   - ./requirements/mariadb/data:/var/lib/mysql
+    #   - ./requirements/mariadb/conf.d:/etc/mysql/conf.d
+    #   - ./requirements/mariadb/initdb.d:/docker-entrypoint-initdb.d
+  nginx:
+    build: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    env_file:
+      - .env
+    ports:
+      - "443:443"
+    # volumes:
+    #   - ./requirements/nginx/nginx.conf:/etc/nginx/nginx.conf
+    #   - ./requirements/nginx/conf.d:/etc/nginx/conf.d
+    #   - ./requirements/nginx/ssl:/etc/nginx/ssl
+    #   - ./requirements/nginx/htpasswd:/etc/nginx/htpasswd
+    #   - ./requirements/nginx/letsencrypt:/etc/letsencrypt
+    restart: always
