@@ -1,9 +1,16 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get install -y sudo && apt-get install -y nginx && apt-get install -y openssl && apt-get install -y vim
+RUN apt-get update && apt-get install -y \
+    nginx \
+    openssl
+
+COPY ./tools/nginx.sh /nginx.sh
+RUN chmod 777 nginx.sh && ./nginx.sh
+
+COPY ./conf/nginx.conf /etc/nginx/conf.d
+
+RUN mkdir -p /run/nginx
 
 EXPOSE 443
-
-COPY ./conf/default /etc/nginx/sites-available/default 
 
 CMD [ "nginx", "-g", "daemon off;" ]
