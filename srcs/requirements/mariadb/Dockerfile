@@ -1,17 +1,15 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get install -y sudo && apt-get install -y mariadb-server && apt-get install -y mariadb-client
+RUN apt-get update && apt-get install -y sudo && apt-get install -y mariadb-server
 
-COPY ./conf/script.sh /script.sh
+COPY ./tools/mariadb.sh /mariadb.sh
 COPY .env /.env
 
-RUN chmod 777 script.sh \
+RUN chmod 777 mariadb.sh \
     && chmod 777 .env
 
 RUN service mysql start \
     && export $(cat .env | xargs) \
-    && ./script.sh
+    && ./mariadb.sh
 
 CMD [ "mysqld" ]
-
-#COPY ./srcs/requirements/mariadb/conf/my.cnf /etc/mysql/my.cnf
