@@ -1,15 +1,15 @@
-FROM debian:buster
+FROM	alpine:3.12.0
 
-RUN apt-get update && apt-get install -y sudo && apt-get install -y mariadb-server
+RUN apk update \
+	apk add mariadb mariadb-client
 
-COPY ./tools/mariadb.sh /mariadb.sh
-COPY .env /.env
+RUN		apk add openrc
+RUN		openrc
+RUN 	touch /run/openrc/softlevel
 
-RUN chmod 777 mariadb.sh \
-    && chmod 777 .env
+RUN		apk add mariadb
 
-RUN service mysql start \
-    && export $(cat .env | xargs) \
-    && ./mariadb.sh
+COPY	./tools/script.sh /
+RUN		chmod +x /script.sh
 
-CMD [ "mysqld" ]
+ENTRYPOINT	[ "/script.sh" ]

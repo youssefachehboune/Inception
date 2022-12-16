@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y \
     openssl \
     vim
 
-COPY  conf/index.html /var/www/html/index.html
 COPY ./tools/nginx.sh /nginx.sh
 
 RUN chmod 777 nginx.sh && ./nginx.sh

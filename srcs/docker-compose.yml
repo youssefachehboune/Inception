@@ -7,12 +7,58 @@ services:
     ports:
       - "3306:3306"
     env_file:
-      - requirements/mariadb/.env
+      - .env
+    networks:
+      - network
     restart: always
+  
+
   nginx:
     build: ./requirements/nginx
     image: nginx
     container_name: nginx
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress_vl:/var/www/html
+    networks:
+      - network
+    env_file:
+      - .env
     ports:
       - "443:443"
     restart: always
+  
+
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    ports:
+      - "9000:9000"
+    env_file:
+      - .env
+    volumes:
+      - wordpress_vl:/var/www/html
+    networks:
+      - network
+    restart: always
+    depends_on:
+      - mariadb
+
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  wordpress_vl:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/yachehbo/data/wordpress
+  # mariadb_vl:
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: /home/yachehbo/data/db
