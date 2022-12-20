@@ -1,15 +1,9 @@
-FROM	alpine:3.12.0
+FROM debian:buster
 
-RUN apk update \
-	apk add mariadb mariadb-client
+RUN apt-get update && apt-get install -y  mariadb-server
 
-RUN		apk add openrc
-RUN		openrc
-RUN 	touch /run/openrc/softlevel
+EXPOSE 3306
 
-RUN		apk add mariadb
-
-COPY	./tools/script.sh /
-RUN		chmod +x /script.sh
-
-ENTRYPOINT	[ "/script.sh" ]
+COPY ./tools/mariadb.sh /tmp/mariadb.sh
+RUN sed -i 's/bind-address/# bind-address/g' /etc/mysql/mariadb.conf.d/50-server.cnf
+ENTRYPOINT [ "bash", "/tmp/mariadb.sh" ]

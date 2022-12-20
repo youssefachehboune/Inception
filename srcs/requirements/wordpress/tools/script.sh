@@ -1,16 +1,11 @@
-#!/bin/sh
+#!bin/bash
+sleep 5
+if [ ! -e /var/www/html/wordpress/wp-config.php ]; then
+    wp config create	--allow-root --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASSWORD} --dbhost=${DB_HOST} --path='/var/www/html/wordpress'
+    # sleep 5
+    wp core install --url=${WP_URL_1} --title=${WP_TITLE} --admin_user=${WP_ROOT_USER} --admin_password=${WP_ROOT_PASSWORD} --admin_email=${WP_ROOT_EMAIL} --path='/var/www/html/wordpress' --allow-root
+    wp user create ${WP_USER} ${WP_USER_EMAIL}  --user_pass=${WP_PASSWORD} --role=author --path='/var/www/html/wordpress' --allow-root
+fi
 
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod +x wp-cli.phar
-mv wp-cli.phar /usr/local/bin/wp
-
-wp core download --allow-root
-sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
-
-mkdir /run/php
-
-
-wp core install --url=https://localhost --title=Inception --admin_user=${WP_ROOT_USER} --admin_password=${WP_ROOT_PASSWORD} --admin_email=yachehbo@student.1337.ma --allow-root
-wp user create ${WP_USER} yachehbo@gmail.com --user_pass=${WP_PASSWORD} --allow-root
-
-exec "$@"
+mkdir -p ./run/php/
+/usr/sbin/php-fpm7.3 -F

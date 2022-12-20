@@ -1,64 +1,66 @@
 version: '3'
 services:
+# create mariadb  container
   mariadb:
     build: ./requirements/mariadb
     image: mariadb
     container_name: mariadb
+    restart: on-failure
     ports:
       - "3306:3306"
     env_file:
       - .env
+    volumes:
+      - mariadb:/var/lib/mysql
     networks:
-      - network
-    restart: always
-  
+      - inception
 
+# create nginx container
   nginx:
     build: ./requirements/nginx
     image: nginx
     container_name: nginx
-    depends_on:
-      - wordpress
-    volumes:
-      - wordpress_vl:/var/www/html
-    networks:
-      - network
-    env_file:
-      - .env
+    restart: on-failure
     ports:
       - "443:443"
-    restart: always
-  
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception
 
+# create wordpress container
   wordpress:
     build: ./requirements/wordpress
     image: wordpress
     container_name: wordpress
     ports:
       - "9000:9000"
+    restart: on-failure
     env_file:
       - .env
     volumes:
-      - wordpress_vl:/var/www/html
-    networks:
-      - network
-    restart: always
+      - wordpress:/var/www/html/wordpress
     depends_on:
       - mariadb
-
-
-networks:
-  network:
-    driver: bridge
-
+    networks:
+      - inception
+# create a volume for mariadb and wordpress data
 volumes:
-  wordpress_vl:
+  mariadb:
+    driver: local
     driver_opts:
       type: none
+      device: /tmp/data/mariadb
       o: bind
-      device: /home/yachehbo/data/wordpress
-  # mariadb_vl:
-  #   driver_opts:
-  #     type: none
-  #     o: bind
-  #     device: /home/yachehbo/data/db
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /tmp/data/wordpress
+      o: bind
+# create a network for containers
+networks:
+  inception:
+    driver: bridge
