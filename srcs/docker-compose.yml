@@ -5,7 +5,7 @@ services:
     build: ./requirements/mariadb
     image: mariadb
     container_name: mariadb
-    restart: on-failure
+    restart: always
     ports:
       - "3306:3306"
     env_file:
@@ -20,7 +20,7 @@ services:
     build: ./requirements/nginx
     image: nginx
     container_name: nginx
-    restart: on-failure
+    restart: always
     ports:
       - "443:443"
     volumes:
@@ -37,7 +37,7 @@ services:
     container_name: wordpress
     ports:
       - "9000:9000"
-    restart: on-failure
+    restart: always
     env_file:
       - .env
     volumes:
@@ -46,6 +46,25 @@ services:
       - mariadb
     networks:
       - inception
+
+  # ADDED FOR BONUS --------------------------------------------------
+
+  # create redis container
+  redis:
+    build: ./requirements/bonus/redis
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    networks:
+      - inception
+# END OF BONUS --------------------------------------------------
+
 # create a volume for mariadb and wordpress data
 volumes:
   mariadb:
