@@ -7,7 +7,7 @@ server {
         ssl_certificate       /etc/nginx/ssl/yachehbo.crt;
         ssl_certificate_key   /etc/nginx/ssl/yachehbo.key;
 
-        ssl_protocols        TLSv1.2 TLSv1.3;
+        ssl_protocols        TLSv1.3;
 
         root /var/www/html/wordpress;
         index index.php;
