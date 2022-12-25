@@ -63,6 +63,41 @@ services:
       - wordpress:/var/www/html/wordpress
     networks:
       - inception
+  vsftpd:
+    build: ./requirements/bonus/vsftpd
+    image: vsftpd
+    container_name: vsftpd
+    restart: always
+    ports:
+      - "40000-40005:40000-40005"
+      - "21:21"
+      - "20:20"
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    networks:
+      - inception
+  adminer:
+    build: ./requirements/bonus/adminer
+    image: adminer
+    container_name: adminer
+    restart: always
+    depends_on:
+      - wordpress
+    ports:
+      - "9001:9001"
+    volumes:
+      - wordpress:/var/www/html/wordpress
+    networks:
+      - inception
+  static-page:
+    build: ./requirements/bonus/static-page
+    image: static-page
+    container_name: static-page
+    ports:
+      - "81:81"
+    restart: always
+    networks:
+      - inception
 # END OF BONUS --------------------------------------------------
 
 # create a volume for mariadb and wordpress data
