@@ -1,0 +1,15 @@
+baseURL = "http://localhost/me"
+languageCode = "en-us"
+title = "inception"
+theme = "hugo-goa"
+
+[params]
+  author = "Yachehbo"
+  intro = "Youssef Achehboune"
+  description = "I'm Just A Developer Who Enjoys Coding <br> @1337 Student"
+[params.social]
+  github = "youssefachehboune"
+  instagram = "yachehbo_"
+  twitter = "yachehbo"
+  linkedin = "youssef-achehboune"
+  email = "yachehbo@gmail.com"

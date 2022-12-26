@@ -98,6 +98,13 @@ services:
     restart: always
     networks:
       - inception
+  hugo:
+    build: ./requirements/bonus/hugo
+    image: hugo
+    container_name: hugo
+    restart: always
+    networks:
+      - inception
 # END OF BONUS --------------------------------------------------
 
 # create a volume for mariadb and wordpress data

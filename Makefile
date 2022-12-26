@@ -1,9 +1,9 @@
 all:
 	bash ./srcs/setup.sh
-	docker-compose -f ./srcs/docker-compose.yml up -d
+	docker-compose -f ./srcs/docker-compose.yml up
 build:
 	bash ./srcs/setup.sh
-	docker-compose -f ./srcs/docker-compose.yml up --build -d
+	docker-compose -f ./srcs/docker-compose.yml up --build
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
