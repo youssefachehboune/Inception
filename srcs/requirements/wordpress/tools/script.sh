@@ -1,5 +1,5 @@
 #!bin/bash
-# sleep 5
+sleep 5
 # if [ ! -e /var/www/html/wordpress/wp-config.php ]; then
     wp config create	--allow-root --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASSWORD} --dbhost=${DB_HOST} --path='/var/www/html/wordpress'
     sleep 5

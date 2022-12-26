@@ -23,7 +23,6 @@ RUN echo "anonymous_enable=NO" >> /etc/vsftpd.conf && \
     echo "userlist_file=/etc/vsftpd.userlist" >> /etc/vsftpd.conf && \
     echo "userlist_deny=NO" >> /etc/vsftpd.conf 
 
-
 RUN echo "allow_writeable_chroot=YES" >> /etc/vsftpd.conf
 
 RUN echo "yachehbo" | tee -a /etc/vsftpd.userlist
