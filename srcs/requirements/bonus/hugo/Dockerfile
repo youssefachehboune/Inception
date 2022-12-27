@@ -1,23 +1,16 @@
 FROM debian:buster
 
+
+RUN apt update -y && apt install -y hugo git
+
 WORKDIR /var/hugo/me
 
-RUN apt update -y && apt upgrade -y && \
-    apt install -y hugo && \
-    apt install -y git
-
-RUN hugo new site /var/hugo/me && \
-    cd /var/hugo/me && \
+RUN hugo new site ./ && \
     git clone https://github.com/shenoybr/hugo-goa.git themes/hugo-goa && \
     hugo -b https://yachehbo.42.fr/me
 
-COPY ./conf/config.toml /var/hugo/me/config.toml
+COPY ./conf/config.toml ./config.toml
 
 EXPOSE 1313
 
-CMD     ["hugo", "server", \
-         "--bind=0.0.0.0", \
-         "--baseURL=https://yachehbo.42.fr/me", \
-         "-p", "1313", \
-         "--logFile=/dev/stdout", \
-        "--appendPort=false"]
+CMD     ["hugo", "server", "--bind=0.0.0.0", "--baseURL=https://yachehbo.42.fr/me", "-p", "1313", "--appendPort=false"]
