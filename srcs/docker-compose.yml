@@ -111,13 +111,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /tmp/data/mariadb
+      device: /home/yachehbo/data/mariadb
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /tmp/data/wordpress
+      device: /home/yachehbo/data/wordpress
       o: bind
 # create a network for containers
 networks:
