@@ -82,11 +82,9 @@ services:
     container_name: adminer
     restart: always
     depends_on:
-      - wordpress
+      - mariadb
     ports:
       - "9001:9001"
-    volumes:
-      - wordpress:/var/www/html/wordpress
     networks:
       - inception
   static-page:
