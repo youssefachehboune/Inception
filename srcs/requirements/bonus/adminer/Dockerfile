@@ -1,7 +1,6 @@
 FROM debian:buster
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y php7.3 php-fpm php7.3-fpm php-mysql mariadb-client wget curl redis php-redis redis-server
+RUN apt-get update && apt-get install -y php7.3 wget php-mysql
 
 RUN wget "http://www.adminer.org/latest.php" -O adminer.php
 
