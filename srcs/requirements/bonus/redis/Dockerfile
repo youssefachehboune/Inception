@@ -1,10 +1,10 @@
 FROM debian:buster
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y redis 
+RUN apt-get update && apt-get install -y redis
 
-COPY ./script.sh /
-RUN chmod +x script.sh
+RUN sed -i "s|127.0.0.1|0.0.0.0|g" /etc/redis/redis.conf && \
+    sed -i "s|# maxmemory <bytes>|maxmemory 256mb|g" /etc/redis/redis.conf && \
+    sed -i "s|# maxmemory-policy noeviction|maxmemory-policy allkeys-lru|g" /etc/redis/redis.conf
 
 EXPOSE 6379
 
-CMD [ "sh", "script.sh" ] 
+CMD [ "redis-server", "--protected-mode", "no" ]
