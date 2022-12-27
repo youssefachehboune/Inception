@@ -1,13 +1,14 @@
-all:
+setup:
 	@mkdir -p /home/yachehbo/data
 	@mkdir -p /home/yachehbo/data/mariadb
 	@mkdir -p /home/yachehbo/data/wordpress
+
+all: setup
 	docker-compose -f ./srcs/docker-compose.yml up
-build:
-	@mkdir -p /home/yachehbo/data
-	@mkdir -p /home/yachehbo/data/mariadb
-	@mkdir -p /home/yachehbo/data/wordpress
+
+build: setup
 	docker-compose -f ./srcs/docker-compose.yml up --build
+
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
