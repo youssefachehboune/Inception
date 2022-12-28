@@ -1,6 +1,127 @@
-# Inception
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
 
+h3{
+    font-family:Ropa Sans;
+    font-wight:bold;
+    font-style:;
+}
 
-## Nginx
-### How to display information about the SSL/TLS version and cipher suite being used
-openssl s_client -connect yachehbo.42.fr:443
+a {
+    color: red;
+}
+
+#links {
+    font-family:Chivo Mono;
+    margin-left:50px;
+    color:#308D46;
+}
+
+#p-text{
+    font-family:Ropa Sans;
+    font-size:20px;
+    margin-left:15px;
+}
+</style>
+
+<a href="https://github.com/youssefachehboune/inception">
+    <img src="images/docker.png" alt="Logo">
+</a>
+<br/>
+<p align="center">
+  <h1 align="center">Inception</h1>
+
+  <p align="center">
+    Creating a docker-based WordPress LEMP stack using docker-compose on Alpine Linux or Debian Buster.
+    <br/>
+    <br/>
+  </p>
+</p>
+
+## Table Of Contents
+
+* [Definitions](#definitions)
+
+## Definitions
+
+### Docker?
+ <p id="p-text">Docker is a tool that uses containers to make creation, deployment, and running of application a lot easier. It binds application and its dependencies inside a container.</p>
+
+### Docker-compose?
+<p id="p-text">Docker Compose is a tool that was developed to help define and share multi-container applications. With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.</p>
+
+### Docker VS Docker-compose
+
+<p id="p-text">The key difference between docker run versus docker-compose is that docker run is entirely command line based, while docker-compose reads configuration data from a YAML file. </p>
+
+<p id="p-text">The second major difference is that docker run can only start one container at a time, while docker-compose will configure and run multiple.</p>
+
+### Docker VS Virtual Machine
+
+![My animated logo](images/docker_vs_vm.png)
+
+<p id="p-text">As you can see each virtual machine has its guest operating system above the host operating system, which makes virtual machines heavy. While on the other hand, Docker containers share the host operating system, and that is why they are lightweight. </p>
+
+<p id="p-text">Here is a table which concludes on a virtual machine and Docker container differences.</p>
+
+<table>
+    <tr>
+      <th style="color:#0fbfbf;">Virtual Machine</th>
+      <th style="color:#0fbfbf;">Docker Container</th>
+    </tr>
+    <tr>
+      <td>Hardware-level process isolation</td>
+      <td>OS level process isolation</td>
+    </tr>
+    <tr>
+      <td>Each VM has a separate OS</td>
+      <td>Each container can share OS</td>
+    </tr>
+    <tr>
+      <td>Boots in minutes</td>
+      <td>Boots in seconds</td>
+    </tr>
+    <tr>
+      <td>VMs are of few GBs</td>
+      <td>Containers are lightweight (KBs/MBs)</td>
+    </tr>
+    <tr>
+      <td>Ready-made VMs are difficult to find</td>
+      <td>Pre-built docker containers are easily available</td>
+    </tr>
+    <tr>
+      <td>VMs can move to new host easily</td>
+      <td>Containers are destroyed and re-created rather than moving</td>
+    </tr>
+    <tr>
+      <td>Creating VM takes a relatively longer time</td>
+      <td>Containers can be created in seconds</td>
+    </tr>
+    <tr>
+      <td>More resource usage</td>
+      <td>Less resource usage</td>
+    </tr>
+</table>
+
+<details>
+    <summary style="font-size:25px;font-weight: bold;"> 🔎 Resources </summary>
+    <h4>For Read</h4>
+    <a id="links" href="https://aws.amazon.com/docker/" > - What is Docker?</a>
+    <br>
+    <a href=https://docs.docker.com/compose/" id="links" > - What is Docker-compose?</a>
+    <br>
+    <a href="https://geekflare.com/docker-vs-virtual-machine/" id="links" > - Docker-vs-virtual-machine?</a>
+    <br>
+    <a href="https://openclassrooms.com/en/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker" id="links" > - Optimize your deployment by building containers with Docker.</a>
+    <br>
+    <a href="https://cloud.google.com/architecture/best-practices-for-building-containers" id="links" > - Best practices for building containers</a>
+    <br>
+    <h4>For Watch</h4>
+    <a href="https://www.youtube.com/watch?v=rOTqprHv1YE" id="links" > - What Is Docker? | What Is Docker And How It Works?</a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=pTFZFxd4hOI" id="links" > - Docker Tutorial for Beginners</a>
+    <br>
+    <a href="https://www.youtube.com/watch?v=HG6yIjZapSA" id="links" > - Docker Compose Tutorial</a>
+    <br>
+</details>
