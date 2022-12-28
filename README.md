@@ -40,8 +40,8 @@
 
 <table>
     <tr>
-      <th">Virtual Machine</th>
-      <th">Docker Container</th>
+      <th>Virtual Machine</th>
+      <th>Docker Container</th>
     </tr>
     <tr>
       <td>Hardware-level process isolation</td>
