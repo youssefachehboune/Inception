@@ -15,6 +15,8 @@
 ## Table Of Contents
 
 * [Definitions](#definitions)
+* [Important commands to use docker](#important-commands-to-use-docker)
+
 
 ## Definitions
 
@@ -80,21 +82,84 @@
 <details>
     <summary> 🔎 Resources </summary>
     <h4>For Read</h4>
-    <a href="https://aws.amazon.com/docker/" > - What is Docker?</a>
+    <a target="_blank"href="https://aws.amazon.com/docker/" > - What is Docker?</a>
     <br>
-    <a href=https://docs.docker.com/compose/" > - What is Docker-compose?</a>
+    <a target="_blank"href=https://docs.docker.com/compose/" > - What is Docker-compose?</a>
     <br>
-    <a href="https://geekflare.com/docker-vs-virtual-machine/" > - Docker-vs-virtual-machine?</a>
+    <a target="_blank"href="https://geekflare.com/docker-vs-virtual-machine/" > - Docker-vs-virtual-machine?</a>
     <br>
-    <a href="https://openclassrooms.com/en/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker" > - Optimize your deployment by building containers with Docker.</a>
+    <a target="_blank"href="https://openclassrooms.com/en/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker" > - Optimize your deployment by building containers with Docker.</a>
     <br>
-    <a href="https://cloud.google.com/architecture/best-practices-for-building-containers" > - Best practices for building containers</a>
+    <a target="_blank"href="https://cloud.google.com/architecture/best-practices-for-building-containers" > - Best practices for building containers</a>
     <br>
     <h4>For Watch</h4>
-    <a href="https://www.youtube.com/watch?v=rOTqprHv1YE" > - What Is Docker? | What Is Docker And How It Works?</a>
+    <a target="_blank"href="https://www.youtube.com/watch?v=rOTqprHv1YE" > - What Is Docker? | What Is Docker And How It Works?</a>
     <br>
-    <a href="https://www.youtube.com/watch?v=pTFZFxd4hOI" > - Docker Tutorial for Beginners</a>
+    <a target="_blank"href="https://www.youtube.com/watch?v=pTFZFxd4hOI" > - Docker Tutorial for Beginners</a>
     <br>
-    <a href="https://www.youtube.com/watch?v=HG6yIjZapSA" > - Docker Compose Tutorial</a>
+    <a target="_blank"href="https://www.youtube.com/watch?v=HG6yIjZapSA" > - Docker Compose Tutorial</a>
     <br>
 </details>
+
+
+## Important commands to use docker
+
+### Build and Run a new container from a Docker image
+```bash
+# Build a Docker image
+docker build .
+# Build a Docker image with specify a tag
+docker build -t “my-image” .
+
+# List all Docker images on your system
+docker image ls
+
+# Run a new container from a Docker image of ID 1234567890
+docker container run 1234567890
+
+# Remove a Docker image of ID 1234567890
+docker rmi 1234567890
+# Remove all Docker images on the system
+docker rmi -f $(docker images -q)
+```
+
+### Create and start containers from a **`docker-compose.yml`** file
+
+```bash
+# Create and start the containers defined in this 'docker-compose.yml' file
+docker-compose up
+# Run the containers in the background
+docker-compose up -d
+# View the status of the containers
+docker-compose ps
+# Run a new container from a Docker image of ID=1234567890
+docker run 1234567890
+# Start a bash session inside the container
+docker run -it 985c432d1565 /bin/bash
+# Remove stopped containers from the Docker host
+docker container prune
+# Stop the containers
+docker-compose stop
+```
+
+### Syntax for Dockefile
+
+```docker
+FROM allows you to define the source image
+
+RUN allows you to run commands inside your container
+
+ADD allows you to add files to your container
+
+WORKDIR allows you to define your working directory
+
+EXPOSE defines the default listening ports
+
+CMD allows you to set the default command when running your Docker containers.
+
+ENTRYPOINT instruction specifies the command that will be run when the container is started from the image
+```
+
+### Syntax for docker-compose
+
+<a href="https://meetup.toast.com/posts/277" target="_blank">Syntax for docker-compose</a>
