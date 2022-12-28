@@ -1,30 +1,3 @@
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
-
-h3{
-    font-family:Ropa Sans;
-    font-wight:bold;
-    font-style:;
-}
-
-a {
-    color: red;
-}
-
-#links {
-    font-family:Chivo Mono;
-    margin-left:50px;
-    color:#308D46;
-}
-
-#p-text{
-    font-family:Ropa Sans;
-    font-size:20px;
-    margin-left:15px;
-}
-</style>
-
 <a href="https://github.com/youssefachehboune/inception">
     <img src="images/docker.png" alt="Logo">
 </a>
