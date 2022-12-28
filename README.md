@@ -16,8 +16,10 @@
 
 * [Definitions](#definitions)
 * [Important commands to use docker](#important-commands-to-use-docker)
+* [Mandatory part](#mandatory-part)
+  * [Nginx](#nginx)
 
-
+---
 ## Definitions
 
 ### Docker?
@@ -79,29 +81,25 @@
     </tr>
 </table>
 
-<details>
-    <summary> 🔎 Resources </summary>
-    <h4>For Read</h4>
-    <a target="_blank"href="https://aws.amazon.com/docker/" > - What is Docker?</a>
-    <br>
-    <a target="_blank"href=https://docs.docker.com/compose/" > - What is Docker-compose?</a>
-    <br>
-    <a target="_blank"href="https://geekflare.com/docker-vs-virtual-machine/" > - Docker-vs-virtual-machine?</a>
-    <br>
-    <a target="_blank"href="https://openclassrooms.com/en/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker" > - Optimize your deployment by building containers with Docker.</a>
-    <br>
-    <a target="_blank"href="https://cloud.google.com/architecture/best-practices-for-building-containers" > - Best practices for building containers</a>
-    <br>
-    <h4>For Watch</h4>
-    <a target="_blank"href="https://www.youtube.com/watch?v=rOTqprHv1YE" > - What Is Docker? | What Is Docker And How It Works?</a>
-    <br>
-    <a target="_blank"href="https://www.youtube.com/watch?v=pTFZFxd4hOI" > - Docker Tutorial for Beginners</a>
-    <br>
-    <a target="_blank"href="https://www.youtube.com/watch?v=HG6yIjZapSA" > - Docker Compose Tutorial</a>
-    <br>
-</details>
+### 🔎 Resources
+ - <h4>For Read</h4>
+  
+   - <a href="https://aws.amazon.com/docker/">What is Docker?</a>
+   - <a href="https://docs.docker.com/compose/" >What is Docker-compose?</a>
+   - <a href="https://geekflare.com/docker-vs-virtual-machine/" >Docker-vs-virtual-machine?</a>
+   - <a href="https://openclassrooms.com/en/courses/2035766-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker" >Optimize your deployment by building containers with Docker.</a>
+   - <a href="https://cloud.google.com/architecture/best-practices-for-building-containers" >Best practices for building containers</a>
 
+- <h4>For Watch</h4>
 
+  - <a href="https://www.youtube.com/watch?v=rOTqprHv1YE" >What Is Docker? | What Is Docker And How It Works?</a>
+  - <a href="https://www.youtube.com/watch?v=pTFZFxd4hOI" >Docker Tutorial for Beginners</a>
+  - <a href="https://www.youtube.com/watch?v=HG6yIjZapSA" >Docker Compose Tutorial</a>
+
+</br>
+</br>
+
+---
 ## Important commands to use docker
 
 ### Build and Run a new container from a Docker image
@@ -162,4 +160,42 @@ ENTRYPOINT instruction specifies the command that will be run when the container
 
 ### Syntax for docker-compose
 
-<a href="https://meetup.toast.com/posts/277" target="_blank">Syntax for docker-compose</a>
+ - <a href="https://meetup.toast.com/posts/277" target="_blank">Syntax for docker-compose</a>
+
+</br>
+</br>
+
+---
+
+</br>
+
+## Mandatory part
+
+---
+
+</br>
+
+## **Nginx**
+
+**Nginx is a web server**
+
+- Uses the `debian:buster` image as a base.
+- Update the package and Install the nginx and openssl packages ```apt-get update && apt-get install -y nginx openssl```
+- Creating a Self-Signed Certificate With OpenSSL
+
+    - [openssl-self-signed-cert](https://www.baeldung.com/openssl-self-signed-cert)
+
+- Expose port `443` listen on port 443 (**the default HTTPS port**) when the container is running.
+- Create your custom default config
+    
+    - [Nginx.conf, Default.conf](https://phsun102.tistory.com/45)
+    
+    - [Configuring HTTPS servers](http://nginx.org/en/docs/http/configuring_https_servers.html)
+    
+- Start the Nginx web server in the foreground when the container is started using :
+    - `CMD [ "nginx", "-g", "daemon off;" ]`
+    
+    > in the foreground means that it is running as **the main process** in the container, and **the container will not exit until the process is stopped**.
+    > 
+
+---
