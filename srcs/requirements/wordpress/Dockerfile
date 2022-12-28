@@ -1,6 +1,6 @@
 FROM	debian:buster
 
-RUN		apt-get update -y && apt-get -y install php7.3 php-fpm php7.3-fpm php-mysql mariadb-client wget curl redis php-redis redis-server
+RUN		apt-get update && apt-get -y install php-fpm php-mysql mariadb-client wget curl
 
 WORKDIR /var/www/html
 RUN		wget https://wordpress.org/latest.tar.gz && tar -xvf latest.tar.gz && rm latest.tar.gz
