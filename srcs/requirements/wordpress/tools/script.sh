@@ -12,5 +12,5 @@ if [ ! -e /var/www/html/wordpress/wp-config.php ]; then
 	wp redis enable --allow-root --path='/var/www/html/wordpress'
 fi
 
-mkdir -p ./run/php/
+mkdir -p /run/php/
 /usr/sbin/php-fpm7.3 -F
