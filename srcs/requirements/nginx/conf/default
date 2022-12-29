@@ -24,7 +24,6 @@ server {
                 fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
                 fastcgi_param   PHP_INFO $fastcgi_path_info;
                 include         fastcgi_params;
-                try_files       $uri =404;
         }
         location            ^~ /me
         {
