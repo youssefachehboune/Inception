@@ -14,4 +14,4 @@ if [ ! -d /var/lib/mysql/${DB_NAME} ]; then
   mysqladmin -u ${DB_ROOT_USER} -p${DB_ROOT_PASSWORD} shutdown
 fi
 
-exec mysqld_safe
+mysqld_safe
