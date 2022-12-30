@@ -4,7 +4,7 @@ RUN		apt-get update && apt-get -y install php-fpm php-mysql mariadb-client wget 
 
 WORKDIR /var/www/html
 RUN		wget https://wordpress.org/latest.tar.gz && tar -xvf latest.tar.gz && rm latest.tar.gz
-RUN		chmod -R 755 /var/www/html/wordpress/
+RUN		chmod 777 /var/www/html/wordpress/
 
 RUN     sed -i -e 's/listen =.*/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
 
