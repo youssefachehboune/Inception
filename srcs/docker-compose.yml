@@ -68,6 +68,8 @@ services:
     image: vsftpd
     container_name: vsftpd
     restart: always
+    env_file:
+      - .env
     ports:
       - "21:21"
     volumes:
