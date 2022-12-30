@@ -1,7 +1,7 @@
 # !/bin/sh
 
 if [ ! -d /var/lib/mysql/${DB_NAME} ]; then
-  service mysql start;
+  service mysql start
 
   mysql -e "CREATE DATABASE IF NOT EXISTS ${DB_NAME};"
 
