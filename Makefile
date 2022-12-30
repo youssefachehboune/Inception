@@ -3,24 +3,23 @@ setup:
 	@mkdir -p /home/yachehbo/data/mariadb
 	@mkdir -p /home/yachehbo/data/wordpress
 
-all: setup
-	docker-compose -f ./srcs/docker-compose.yml up
+up: setup
+	docker-compose -f ./srcs/docker-compose.yml up -d
 
 build: setup
-	docker-compose -f ./srcs/docker-compose.yml up --build
+	docker-compose -f ./srcs/docker-compose.yml up --build -d
 
 down:
 	docker-compose -f ./srcs/docker-compose.yml down
 
 clean:
-	@docker system prune -a
-	@rm -rf /home/yachehbo/data
+	@docker stop $$(docker ps -qa)
+	@docker rm $$(docker ps -qa)
+	@docker rmi -f $$(docker images -qa)
 
 fclean:
-	@docker stop $$(docker ps -qa)
-	@docker system prune --all --force --volumes
-	@docker network prune --force
-	@docker volume prune --force
+	@docker volume rm $$(docker volume ls -q)
 	@rm -rf /home/yachehbo/data
+	@docker network rm $$(docker network ls -q)
 
 re: fclean all
