@@ -1,4 +1,4 @@
-baseURL = "http://yachehbo.42.fr/me"
+baseURL = "https://yachehbo.42.fr/me"
 languageCode = "en-us"
 title = "inception"
 theme = "hugo-goa"
