@@ -18,6 +18,8 @@
 * [Important commands to use docker](#important-commands-to-use-docker)
 * [Mandatory part](#mandatory-part)
   * [Nginx](#nginx)
+  * [Mariadb](#mariadb)
+  * [Wordpress](#wordpress)
 
 ---
 ## Definitions
