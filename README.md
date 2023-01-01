@@ -169,7 +169,7 @@ ENTRYPOINT instruction specifies the command that will be run when the container
 
 </br>
 
-## Mandatory part
+## **Mandatory part**
 
 ---
 
@@ -177,7 +177,7 @@ ENTRYPOINT instruction specifies the command that will be run when the container
 
 ## **Nginx**
 
-**Nginx is a web server**
+**NGINX is a web server that is widely used for hosting websites and applications. It is known for its high performance, reliability**
 
 - Uses the `debian:buster` image as a base.
 - Update the package and Install the nginx and openssl packages ```apt-get update && apt-get install -y nginx openssl```
@@ -185,7 +185,6 @@ ENTRYPOINT instruction specifies the command that will be run when the container
 
     - [openssl-self-signed-cert](https://www.baeldung.com/openssl-self-signed-cert)
 
-- Expose port `443` listen on port 443 (**the default HTTPS port**) when the container is running.
 - Create your custom default config
     
     - [Nginx.conf, Default.conf](https://phsun102.tistory.com/45)
@@ -196,6 +195,11 @@ ENTRYPOINT instruction specifies the command that will be run when the container
     - `CMD [ "nginx", "-g", "daemon off;" ]`
     
     > in the foreground means that it is running as **the main process** in the container, and **the container will not exit until the process is stopped**.
-    > 
 
+- [What are SSL/TLS Certificates? Why do we Need them? and How do they Work?](https://www.youtube.com/watch?v=r1nJT63BFQ0)
+
+- [Transport Layer Security, TLS 1.2 and 1.3](https://www.youtube.com/watch?v=AlE5X1NlHgg)
+- [Learn CGI and FastCGI](https://server-talk.tistory.com/308)
+
+- [PHP-fastcgi](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/)
 ---
