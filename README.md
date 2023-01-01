@@ -203,3 +203,19 @@ ENTRYPOINT instruction specifies the command that will be run when the container
 
 - [PHP-fastcgi](https://www.nginx.com/resources/wiki/start/topics/examples/phpfcgi/)
 ---
+<br/>
+
+## **MariaDB**
+**MariaDB is widely used as a database management system, particularly in Linux environments. It is known for its speed, reliability, and security.**
+
+- Uses the `debian:buster` image as a base.
+- Update the package and Install mariadb-server ```apt-get update && apt-get install -y mariadb-server```
+- Creating a database and user:
+    
+    ````use `-e` option to specify the command to be executed by the `mysql` command-line````
+
+- [mysqld_safe](https://dev.mysql.com/doc/refman/8.0/en/mysqld-safe.html#:~:text=mysqld_safe%20is%20the%20recommended%20way,given%20later%20in%20this%20section.)
+
+- [Change MariaDB root password](https://www.digitalocean.com/community/tutorials/how-to-reset-your-mysql-or-mariadb-root-password)
+
+___
