@@ -219,3 +219,28 @@ ENTRYPOINT instruction specifies the command that will be run when the container
 - [Change MariaDB root password](https://www.digitalocean.com/community/tutorials/how-to-reset-your-mysql-or-mariadb-root-password)
 
 ___
+<br/>
+
+## **WordPress**
+**WordPress is a content management system (CMS) based on PHP and MySQL. It is an open-source platform that is widely used for building websites, blogs, and applications.**
+
+- Uses the debian:buster image as a base.
+- Install php-fpm and php-mysql mariadb-client wget curl using
+
+  ``` apt-get update && apt-get -y install php-fpm php-mysql mariadb-client wget curl ```
+- Download wordpress in ``` /var/www/html ``` From  ``` https://wordpress.org/latest.tar.gz ```
+
+- Listen to **9000** port in ``` /etc/php/7.3/fpm/pool.d/www.conf ```
+
+- curl ``` https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar ```  and move it to ``` /usr/local/bin/wp ```
+
+- create wp-config using ``` wp config create ```
+
+- install WordPress on our web server using ``` wp core install ```
+
+- create a user in wordpress with author role using ``` wp user create ```
+
+### 🔎 Resources
+- [install wordpress using wp-cli](https://www.cloudways.com/blog/install-wordpress-using-wp-cli/)
+- [wp user create | WP-CLI Command | WordPress Developer Resources](https://developer.wordpress.org/cli/commands/user/create/)
+- [start php-fpm in foreground](https://stackoverflow.com/questions/37313780/how-can-i-start-php-fpm-in-a-docker-container-by-default)
