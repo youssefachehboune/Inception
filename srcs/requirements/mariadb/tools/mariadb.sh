@@ -11,7 +11,7 @@ if [ ! -d /var/lib/mysql/${DB_NAME} ]; then
 
   sleep 2
   mysql -u${DB_ROOT_USER} -p${DB_ROOT_PASSWORD} -e "ALTER USER '${DB_ROOT_USER}'@'localhost' IDENTIFIED BY '${DB_ROOT_PASSWORD}';"
-  mysqladmin -u ${DB_ROOT_USER} -p${DB_ROOT_PASSWORD} shutdown
+  mysqladmin -u${DB_ROOT_USER} -p${DB_ROOT_PASSWORD} shutdown
 fi
 
 mysqld_safe
